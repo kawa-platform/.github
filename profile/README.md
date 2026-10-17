@@ -7,7 +7,7 @@ only steps in where a feature applies: it authenticates clients, checks requests
 virtual topic names and holds topic changes to your conventions. Everything else passes straight through to the
 broker.
 
-![kawa: Kafka clients and AI agents connect to kawa gateway, which adds authentication, RBAC, virtual topics, consume filters, governance in front of the Kafka cluster, with MCP for AI agents coming](docs/kawa-platform.svg)
+![kawa: Kafka clients and AI agents connect to kawa gateway, which adds authentication, RBAC, virtual topics, consume filters, governance in front of the Kafka cluster, with MCP for AI agents coming](../docs/kawa-platform.svg)
 
 ## What kawa adds to your cluster
 
