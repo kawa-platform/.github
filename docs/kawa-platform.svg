@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 588" width="1040" height="588" role="img" aria-labelledby="title desc">
+  <title id="title">kawa: the Kafka gateway platform</title>
+  <desc id="desc">Kafka clients and AI agents connect to kawa gateway unchanged. The gateway adds authentication, RBAC, virtual topics, consume filters, and governance in front of the Kafka cluster and its schema registry. An MCP endpoint for AI agents is coming. It is managed with kawa studio, the admin API and Helm charts, with a Kubernetes operator coming.</desc>
+  <style>
+    /* kawa-design tokens (tokens.css): dark by default, like kawa studio; light follows the viewer's theme. */
+    svg {
+      --bg: #020b18; --surface: #07182b; --elevated: #0c2238; --line: rgba(173, 192, 210, .13); --divider: #19344b;
+      --text: #ffffff; --muted: #adc0d2;
+      --accent: #22d3ee; --accent-soft: #07293a; --brand: #c9a227; --on-brand: #020b18;
+      --flow: rgba(173, 192, 210, .45);
+      --glow-1: rgba(34, 211, 238, .10); --glow-2: rgba(201, 162, 39, .08);
+    }
+    @media (prefers-color-scheme: light) {
+      svg {
+        --bg: #eef2f7; --surface: #ffffff; --elevated: #f1f5f9; --line: rgba(11, 26, 46, .09); --divider: #dbe2ea;
+        --text: #020617; --muted: #475569;
+        --accent: #0891b2; --accent-soft: #e0f2fe; --brand: #f5c518; --on-brand: #0f172a;
+        --flow: rgba(71, 85, 105, .45);
+        --glow-1: rgba(8, 145, 178, .07); --glow-2: rgba(245, 197, 24, .09);
+      }
+    }
+    text { font-family: Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; fill: var(--text); }
+    .pill-t { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .bg { fill: var(--bg); }
+    .card { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+    .row { fill: var(--elevated); stroke: var(--line); stroke-width: 1; }
+    .tile { fill: var(--elevated); stroke: var(--line); stroke-width: 1; }
+    .row .tile, .tile-r { fill: var(--surface); }
+    .ico { fill: none; stroke: var(--accent); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+    .brand { fill: var(--brand); }
+    .brand-t { fill: var(--on-brand); font-size: 21px; font-weight: 600; }
+    .h1 { font-size: 17px; font-weight: 600; }
+    .h { font-size: 15px; font-weight: 600; }
+    .d { font-size: 12.5px; fill: var(--muted); }
+    .sec { font-size: 10.5px; font-weight: 500; letter-spacing: .09em; fill: var(--muted); }
+    .pill { fill: var(--elevated); }
+    .pill-t { font-size: 11px; fill: var(--muted); }
+    .link { fill: var(--accent-soft); }
+    .link-t { font-size: 11.5px; font-weight: 500; fill: var(--accent); }
+    .divider { stroke: var(--divider); stroke-width: 1; }
+    .flow { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+    .flow-v { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+    .dash { fill: none; stroke: var(--flow); stroke-width: 1.4; stroke-dasharray: 4 4; }
+    .head { fill: var(--flow); } .head-v { fill: var(--accent); }
+    .g1 { stop-color: var(--glow-1); } .g1-end { stop-color: var(--glow-1); stop-opacity: 0; }
+    .g2 { stop-color: var(--glow-2); } .g2-end { stop-color: var(--glow-2); stop-opacity: 0; }
+  </style>
+  <defs>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 40) scale(560 380)">
+      <stop offset="0" class="g1"/><stop offset="1" class="g1-end"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(940 588) scale(560 360)">
+      <stop offset="0" class="g2"/><stop offset="1" class="g2-end"/>
+    </radialGradient>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="av" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="head-v" d="M0,0 L10,5 L0,10 z"/></marker>
+    <!-- lucide-style icons, 24x24, as in kawa studio -->
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+    <symbol id="i-funnel" viewBox="0 0 24 24"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-braces" viewBox="0 0 24 24"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol>
+  </defs>
+
+  <!-- canvas with studio's soft cyan / gold glow -->
+  <rect class="bg" width="1040" height="588" rx="18"/>
+  <rect fill="url(#glow1)" width="1040" height="588" rx="18"/>
+  <rect fill="url(#glow2)" width="1040" height="588" rx="18"/>
+
+  <!-- header, like studio's sidebar brand -->
+  <rect class="brand" x="32" y="28" width="40" height="40" rx="10"/>
+  <text class="brand-t" x="52" y="56" text-anchor="middle">川</text>
+  <text class="h1" x="86" y="45">kawa</text>
+  <text class="d" x="86" y="62">The Kafka gateway platform</text>
+
+  <!-- ───── left: who connects ───── -->
+  <rect class="card" x="32" y="110" width="220" height="150" rx="16"/>
+  <rect class="tile" x="50" y="128" width="36" height="36" rx="10"/>
+  <use href="#i-monitor" class="ico" x="58" y="136" width="20" height="20"/>
+  <text class="h" x="98" y="144">Kafka clients</text>
+  <rect class="pill" x="98" y="151" width="96" height="18" rx="6"/>
+  <text class="pill-t" x="105" y="164">any language</text>
+  <text class="sec" x="50" y="192">CONNECT</text>
+  <text class="d" x="50" y="212">to kawa instead of a broker,</text>
+  <text class="d" x="50" y="230">with their own credentials</text>
+
+  <rect class="card" x="32" y="280" width="220" height="150" rx="16"/>
+  <rect class="tile" x="50" y="298" width="36" height="36" rx="10"/>
+  <use href="#i-bot" class="ico" x="58" y="306" width="20" height="20"/>
+  <text class="h" x="98" y="314">AI agents</text>
+  <rect class="pill" x="98" y="321" width="88" height="18" rx="6"/>
+  <text class="pill-t" x="105" y="334">coming soon</text>
+  <text class="sec" x="50" y="362">WILL CALL</text>
+  <text class="d" x="50" y="382">gateway tools over MCP, with</text>
+  <text class="d" x="50" y="400">the same login and RBAC</text>
+
+  <!-- ───── gateway ───── -->
+  <rect class="card" x="284" y="96" width="484" height="400" rx="16"/>
+  <rect class="brand" x="304" y="114" width="36" height="36" rx="10"/>
+  <text class="brand-t" x="322" y="139" text-anchor="middle" style="font-size: 19px">川</text>
+  <text class="h" x="352" y="129">kawa gateway</text>
+  <rect class="pill" x="352" y="136" width="190" height="18" rx="6"/>
+  <text class="pill-t" x="359" y="149">:9092 · Kafka wire protocol</text>
+  <rect class="pill" x="550" y="136" width="126" height="18" rx="6"/>
+  <text class="pill-t" x="557" y="149">:8080 · admin API</text>
+
+  <!-- capabilities -->
+  <rect class="row" x="304" y="172" width="212" height="76" rx="10"/>
+  <rect class="tile" x="318" y="186" width="28" height="28" rx="8"/>
+  <use href="#i-lock" class="ico" x="324" y="192" width="16" height="16"/>
+  <text class="h" x="358" y="205">Authentication</text>
+  <text class="d" x="318" y="226">SASL (PLAIN, SCRAM) and</text>
+  <text class="d" x="318" y="241">TLS client certificates</text>
+
+  <rect class="row" x="536" y="172" width="212" height="76" rx="10"/>
+  <rect class="tile" x="550" y="186" width="28" height="28" rx="8"/>
+  <use href="#i-shield" class="ico" x="556" y="192" width="16" height="16"/>
+  <text class="h" x="590" y="205">RBAC</text>
+  <text class="d" x="550" y="226">Roles, groups and ACLs.</text>
+  <text class="d" x="550" y="241">Deny by default.</text>
+
+  <rect class="row" x="304" y="260" width="212" height="76" rx="10"/>
+  <rect class="tile" x="318" y="274" width="28" height="28" rx="8"/>
+  <use href="#i-swap" class="ico" x="324" y="280" width="16" height="16"/>
+  <text class="h" x="358" y="293">Virtual topics</text>
+  <text class="d" x="318" y="314">Stable names, rewritten in</text>
+  <text class="d" x="318" y="329">both directions</text>
+
+  <rect class="row" x="536" y="260" width="212" height="76" rx="10"/>
+  <rect class="tile" x="550" y="274" width="28" height="28" rx="8"/>
+  <use href="#i-funnel" class="ico" x="556" y="280" width="16" height="16"/>
+  <text class="h" x="590" y="293">Consume filters</text>
+  <text class="d" x="550" y="314">By header or CEL, on JSON</text>
+  <text class="d" x="550" y="329">and Avro records</text>
+
+  <rect class="row" x="304" y="348" width="212" height="76" rx="10"/>
+  <rect class="tile" x="318" y="362" width="28" height="28" rx="8"/>
+  <use href="#i-check" class="ico" x="324" y="368" width="16" height="16"/>
+  <text class="h" x="358" y="381">Governance</text>
+  <text class="d" x="318" y="402">CEL rules for topic, group</text>
+  <text class="d" x="318" y="417">and partition conventions</text>
+
+  <rect class="row" x="536" y="348" width="212" height="76" rx="10" style="stroke-dasharray: 4 4; stroke: var(--flow)"/>
+  <rect class="tile" x="550" y="362" width="28" height="28" rx="8"/>
+  <use href="#i-terminal" class="ico" x="556" y="368" width="16" height="16"/>
+  <text class="h" x="590" y="381">MCP</text>
+  <rect class="pill" x="648" y="356" width="88" height="18" rx="6"/>
+  <text class="pill-t" x="655" y="369">coming soon</text>
+  <text class="d" x="550" y="402">Agents will manage kawa</text>
+  <text class="d" x="550" y="417">over MCP, as themselves</text>
+
+  <!-- footer -->
+  <line class="divider" x1="304" y1="442" x2="748" y2="442"/>
+  <text class="d" x="304" y="464">kawa acts only where a rule or feature applies;</text>
+  <text class="d" x="304" y="482">everything else passes straight through.</text>
+
+  <!-- ───── right: the cluster ───── -->
+  <rect class="card" x="800" y="172" width="208" height="166" rx="16"/>
+  <rect class="tile" x="818" y="190" width="36" height="36" rx="10"/>
+  <use href="#i-database" class="ico" x="826" y="198" width="20" height="20"/>
+  <text class="h" x="866" y="206">Kafka cluster</text>
+  <rect class="pill" x="866" y="213" width="62" height="18" rx="6"/>
+  <text class="pill-t" x="873" y="226">brokers</text>
+  <text class="sec" x="818" y="260">HOLDS</text>
+  <text class="d" x="818" y="282">physical topics and data</text>
+  <text class="sec" x="818" y="324">SEES</text>
+  <text class="d" x="858" y="324">one service identity</text>
+
+  <rect class="card" x="800" y="348" width="208" height="76" rx="16"/>
+  <rect class="tile" x="818" y="366" width="36" height="36" rx="10"/>
+  <use href="#i-braces" class="ico" x="826" y="374" width="20" height="20"/>
+  <text class="h" x="866" y="382">schema registry</text>
+  <text class="d" x="866" y="400">decodes Avro records</text>
+
+  <!-- connections -->
+  <path class="flow-v" d="M252,185 H284" marker-start="url(#av)" marker-end="url(#av)"/>
+  <path class="dash" d="M252,355 H284" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="dash" d="M768,255 H800" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="dash" d="M768,386 H800" marker-end="url(#a)"/>
+
+  <!-- ───── managed with ───── -->
+  <rect class="card" x="32" y="516" width="976" height="56" rx="14"/>
+  <text class="sec" x="50" y="548">MANAGED WITH</text>
+  <rect class="link" x="170" y="533" width="96" height="22" rx="6"/>
+  <text class="link-t" x="183" y="548">kawa studio</text>
+  <rect class="link" x="276" y="533" width="86" height="22" rx="6"/>
+  <text class="link-t" x="289" y="548">admin API</text>
+  <rect class="link" x="372" y="533" width="96" height="22" rx="6"/>
+  <text class="link-t" x="385" y="548">Helm charts</text>
+  <rect class="link" x="478" y="533" width="196" height="22" rx="6" style="stroke: var(--accent); stroke-opacity: .5; stroke-dasharray: 4 3"/>
+  <text class="link-t" x="491" y="548">kawa operator (coming soon)</text>
+</svg>
